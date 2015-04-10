@@ -42,8 +42,4 @@ public class PascalTriangle {
         }
         return res;
     }
-
-    public static void main(String[] args) {
-        System.out.println(new PascalTriangle().generate(5));
-    }
 }

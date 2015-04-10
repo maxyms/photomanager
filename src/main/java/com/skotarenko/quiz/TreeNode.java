@@ -1,6 +1,12 @@
 package com.skotarenko.quiz;
 
-public class TreeNode {
+/**
+ * Helper class for BinaryTree problems
+ * 
+ * @author maxyms
+ *
+ */
+class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
