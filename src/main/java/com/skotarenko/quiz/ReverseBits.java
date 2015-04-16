@@ -14,39 +14,19 @@ package com.skotarenko.quiz;
  */
 public class ReverseBits {
     public int reverseBits(int n) {
-        int res = 0;
-        for (int i = 0; i < 32; i++) {
-            res += (n % 2);
-            res = res << 1;
-            n = n >> 1;
+        long v = n;
+        if (n < 0) {
+            v = n & 0xffffffffL;
         }
-        //        if (n < 0) {
-        //            v = n & 0x00000000ffffffffL;
-        //        }
-        //        return (int) ~v;
-        //        while (n > 0) {
-        //            res += (n % 2);
-        //            res = res << 1;
-        //            if (n % 2 == 1) {
-        //                res++;
-        //            }
-        //            n = n >> 1;
-        //            
-        //            if (n > 0) {
-        //                res = res << 1;
-        //            }
-        //            res += n % 2;
-        //            res = res << 1;
-        //            n = n >> 1;
-        //            if (n == 0) {
-        //                res += n % 2;
-        //            }
-        //        }
-        //        long v = n;
-        //        if (n < 0) {
-        //            v = n & 0x00000000ffffffffL;
-        //        }
-        //        return (int) ~v;
-        return res;
+        long res = 0;
+        int i = 0;
+        for (; i < 32 && v > 0; i++) {
+            res += (v % 2);
+            res = res << 1;
+            v = v >>> 1;
+        }
+        res = res >> 1;
+        res = res << (32 - i);
+        return (int) res;
     }
 }
