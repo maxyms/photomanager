@@ -1,1 +1,2 @@
 # photomanager
+PhotoManager Application

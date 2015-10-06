@@ -3,9 +3,11 @@ package com.skotarenko.photomanager;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.PathMatcher;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
@@ -19,30 +21,35 @@ import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AnyFileVisitor extends SimpleFileVisitor<Path> {
-    private static final Logger logger = LoggerFactory.getLogger(AnyFileVisitor.class);
+public class ImageFileVisitor extends SimpleFileVisitor<Path> {
+    private static final Logger logger = LoggerFactory.getLogger(ImageFileVisitor.class);
     private Collection<File> collection;
+    private final static PathMatcher matcher = FileSystems.getDefault().getPathMatcher("glob:**.jp*g");
 
-    public AnyFileVisitor(Collection<File> collection) {
+    public ImageFileVisitor(Collection<File> collection) {
         this.collection = collection;
     }
 
     @Override
     public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
-        if ("Thumbs.db".equalsIgnoreCase(path.getFileName().toString())) {
-            return FileVisitResult.CONTINUE;
-        }
+        //        if ("Thumbs.db".equalsIgnoreCase(path.getFileName().toString())) {
+        //            return FileVisitResult.CONTINUE;
+        //        }
         if (Files.isDirectory(path)) {
             Files.walkFileTree(path, this);
         } else {
-            File f = new File();
-            f.setName(path.getFileName().toString());
-            f.setPath(path.toAbsolutePath().toString());
-            f.setSize(Files.size(path));
-            FileTime fTime = (FileTime) Files.getAttribute(path, "creationTime");
-            f.setCreatedDate(new Date(fTime.toMillis()));
-            f.setColorSchema(calculateColorSchema(path));
-            collection.add(f);
+            if (matcher.matches(path)) {
+                File f = new File();
+                f.setName(path.getFileName().toString());
+                f.setPath(path.toAbsolutePath().toString());
+                f.setSize(Files.size(path));
+                FileTime fTime = (FileTime) Files.getAttribute(path, "creationTime");
+                f.setCreatedDate(new Date(fTime.toMillis()));
+                //            f.setColorSchema(calculateColorSchema(path));
+                collection.add(f);
+            } else {
+                //                logger.warn("Skipping file: " + path);
+            }
         }
         return FileVisitResult.CONTINUE;
     }
