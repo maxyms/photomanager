@@ -1,0 +1,14 @@
+<a ui-sref="newItem" class="btn-primary btn-lg nodecoration">Add New Item</a>
+
+<table class="table itemtable">
+	<tr>
+		<td><h3>All Files</h3></td>
+		<td></td>
+	</tr>
+	<tr ng-repeat="file in files">
+		<td>{{file.name}}</td>
+		<td>${{file.size}}</td>
+		<td><a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
+			<a class="btn btn-danger" ng-click="deleteItem(item)">Delete</a></td>
+	</tr>
+</table>
