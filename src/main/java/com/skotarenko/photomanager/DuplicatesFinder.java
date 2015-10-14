@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,11 @@ import org.slf4j.LoggerFactory;
 public class DuplicatesFinder {
     private static final Logger logger = LoggerFactory.getLogger(DuplicatesFinder.class);
 
-    public void findDuplicates(Collection<File> files) {
+    public Collection<DuplicateEntry> findDuplicates(Collection<File> files) {
         //        logger.debug("Find duplicates...");
         Map<IKey, Collection<File>> duplicates = compareFiles(files);
+        Function<Map.Entry<IKey, Collection<File>>, DuplicateEntry> mapper = e -> new DuplicateEntry(((NameSizeKey) e.getKey()).getName(), e.getValue());
+        Collection<DuplicateEntry> duplicateEntries = duplicates.entrySet().stream().map(mapper).collect(Collectors.toList());
         logger.debug("Total duplicates: " + duplicates.size());
         printDuplicates(duplicates);
         //        files.stream().forEach(f -> logger.debug("\t" + f.getName() + " " + Arrays.toString(f.getColorSchema())));
@@ -27,6 +30,7 @@ public class DuplicatesFinder {
         //        logger.debug("Total files: " + files.size());
         //        logger.debug("Total duplicates: " + duplicates.size());
         //        logger.debug("End duplicates...");
+        return duplicateEntries;
     }
 
     private Map<IKey, Collection<File>> compareFiles(Collection<File> files) {

@@ -9,6 +9,14 @@ public class NameSizeKey implements IKey {
         this.size = f.getSize();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
     @Override
     public String toString() {
         return "NameSizeKey [name=" + name + ", size=" + size + "]";

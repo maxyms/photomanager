@@ -1,14 +1,16 @@
-<a ui-sref="newItem" class="btn-primary btn-lg nodecoration">Add New Item</a>
-
 <table class="table itemtable">
 	<tr>
-		<td><h3>All Files</h3></td>
+		<td><h3>
+				All Files - <span ng-bind="files.length"></span>
+			</h3></td>
 		<td></td>
 	</tr>
 	<tr ng-repeat="file in files">
 		<td>{{file.name}}</td>
-		<td>${{file.size}}</td>
-		<td><a class="btn btn-primary" ui-sref="viewItem({id:item.id})">View</a>
-			<a class="btn btn-danger" ng-click="deleteItem(item)">Delete</a></td>
+		<td>{{file.size / 1024 /1024 | number : 2}} Mb</td>
+		<td>{{file.path}}</td>
+		<td>{{file.createdDate | date:'yyyy-MM-dd HH:mm'}}</td>
+		<td><a class="btn btn-primary" ui-sref="viewItem('{{file.path}}')">Duplicates</a>
+		</td>
 	</tr>
 </table>

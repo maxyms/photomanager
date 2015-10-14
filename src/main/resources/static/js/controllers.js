@@ -9,11 +9,20 @@ angular.module('photomanager.controllers', []).controller('FilesListController',
 					});
 				}*/
 			};
-		}).controller('ItemViewController',
-		function($scope, $stateParams, Item) {
-			$scope.item = Item.get({
-				id : $stateParams.id
+		}).controller('DuplicatesController',
+		function($scope, $stateParams, Duplicates) {
+			Duplicates.get.then(function(result) {
+				console.log(result.data);
+//				console.log(result.data.data);
+//				console.log(result.data.data.fundOptions);
+//				if(result.data.isSuccess){
+//					$scopeModal.fundOptions = result.data.data.fundOptions;
+//				}
+				$scope.duplicates = result.data;
+			}, function(result) {
+				console.error("Error: No data returned. " + result);
 			});
+			
 		}).controller('ItemCreateController',
 		function($scope, $state, $stateParams, Item) {
 			$scope.item = new Item();

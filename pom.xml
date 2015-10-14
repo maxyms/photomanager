@@ -4,6 +4,7 @@
 	<groupId>com.skotarenko</groupId>
 	<artifactId>photomanager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
 	<name>PhotoManager</name>
 	<description>PhotoManager</description>
@@ -18,7 +19,8 @@
 	<properties>
 		<logback.version>1.1.2</logback.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.skotarenko.photomanager.app.PhotoManagerApplication</start-class>
+		<start-class>com.skotarenko.photomanager.PhotoManagerApplication</start-class>
+        <java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -29,6 +31,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
 		<!-- LogBack dependencies -->
 
 		<dependency>

@@ -6,10 +6,10 @@ angular.module('photomanager').config(function($stateProvider) {
 		url : '/files',
 		templateUrl : 'partials/files.html',
 		controller : 'FilesListController'
-	}).state('viewItem', { // state for showing single item
-		url : '/items/:id/view',
-		templateUrl : 'partials/item-view.html',
-		controller : 'ItemViewController'
+	}).state('duplicates', { // state for showing single item
+		url : '/duplicates',
+		templateUrl : 'partials/duplicates.html',
+		controller : 'DuplicatesController'
 	}).state('newItem', { // state for adding a new item
 		url : '/items/new',
 		templateUrl : 'partials/item-add.html',

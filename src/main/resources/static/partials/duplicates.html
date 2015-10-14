@@ -1,0 +1,33 @@
+<div id='duplicates_header'>
+	<h3>
+		Duplicates found - <span ng-bind="duplicates.length"></span>
+	</h3>
+</div>
+
+<div id='duplicates' class="container-fluid panel">
+	<div class="row" ng-repeat="obj in duplicates">
+		<div class="col-lg-12 col-md-12">
+			<span>{{obj.name}}</span>
+		</div>
+		<div class="col-lg-12 col-md-12">
+			<div id='duplicates_files' class="container-fluid panel">
+				<div class="row" ng-repeat="file in obj.files">
+					<div class="col-lg-8 col-md-8">
+						<span>{{file.path}}</span>
+					</div>
+
+					<div class="col-lg-2 col-md-2">
+						<span>{{file.size / 1024 /1024 | number : 2}} Mb</span>
+					</div>
+
+					<div class="col-lg-2 col-md-2">
+						<span>{{file.createdDate | date:'yyyy-MM-dd HH:mm'}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+</div>

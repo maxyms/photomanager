@@ -2,10 +2,12 @@ package com.skotarenko.photomanager.web.data;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -14,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.skotarenko.photomanager.File;
 import com.skotarenko.photomanager.PhotoFileManager;
 
@@ -38,7 +41,10 @@ public class FileRepository {
                 contents += lineFromFile;
             }
             logger.debug("Content: {} ", contents.length());
-            files = new GsonBuilder().create().fromJson(contents, Collection.class);
+            Type listType = new TypeToken<ArrayList<File>>() {
+            }.getType();
+            files = new GsonBuilder().create().fromJson(contents, listType);
+            //            files = new GsonBuilder().create().fromJson(contents, Collection.class);
         } catch (IOException e) {
             throw new RuntimeException("Error reading dump file", e);
         }
