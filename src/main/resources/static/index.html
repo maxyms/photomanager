@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <base href="/" />
-<title>The Movie App</title>
+<title>Photo files manager</title>
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/app.css" />
@@ -14,23 +14,17 @@
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" ui-sref="items">Shopping List</a>
+				<a class="navbar-brand" ui-sref="items">PhotoFiles Manager</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a ui-sref="items">Home</a></li>
+					<li><a ui-sref="items">Home</a></li>
+					<li><a ui-sref="files">Files</a></li>
+					<li><a ui-sref="duplicates">Duplicates</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container">
-		<div class="row top-buffer">
-			<div class="col-xs-12">
-				<a ui-sref="files" class="btn-primary btn-lg nodecoration">Files</a>
-				<a ui-sref="duplicates" class="btn-primary btn-lg nodecoration">Duplicates</a>
-			</div>
-		</div>
-	</div>
 	<div class="container">
 		<div class="row top-buffer">
 			<div class="col-xs-12">

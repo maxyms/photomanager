@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skotarenko.photomanager.DuplicateEntry;
+import com.skotarenko.photomanager.Duplicates;
 import com.skotarenko.photomanager.DuplicatesFinder;
 import com.skotarenko.photomanager.File;
-import com.skotarenko.photomanager.web.data.FileRepository;
+import com.skotarenko.photomanager.web.data.FilesDataService;
 
 @RestController
 @RequestMapping("/api/duplicate")
 public class DuplicateFilesRestController {
     @Autowired
-    private FileRepository repo;
+    private FilesDataService service;
 
     //    @RequestMapping(method = RequestMethod.GET)
     //    public Collection<File> getAll(@RequestParam(value = "path") String path) {
@@ -30,9 +30,9 @@ public class DuplicateFilesRestController {
     //        return duplicates;
     //    }
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<DuplicateEntry> getAll() {
-        Collection<File> allFiles = repo.get();
-        Collection<DuplicateEntry> duplicates = new DuplicatesFinder().findDuplicates(allFiles);
+    public Duplicates getAll() {
+        Collection<File> allFiles = service.get();
+        Duplicates duplicates = new DuplicatesFinder().findDuplicates(allFiles);
         return duplicates;
     }
 }

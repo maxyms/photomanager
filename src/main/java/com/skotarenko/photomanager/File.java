@@ -3,11 +3,16 @@ package com.skotarenko.photomanager;
 import java.util.Arrays;
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+
 public class File {
+    @Id
+    private String id;
     private long size;
     private String name;
     private String path;
     private Date createdDate;
+    private String status;
     private int[] colorSchema;
 
     public long getSize() {
@@ -50,9 +55,24 @@ public class File {
         this.colorSchema = colorSchema;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "File [size=" + size + ", name=" + name + ", path=" + path + ", createdDate=" + createdDate + ", colorSchema="
-                + Arrays.toString(colorSchema) + "]";
+        return "File [size=" + size + ", name=" + name + ", path=" + path + ", createdDate=" + createdDate + ", colorSchema=" + Arrays.toString(colorSchema) + "]";
     }
 }

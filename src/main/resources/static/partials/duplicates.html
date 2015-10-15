@@ -1,28 +1,38 @@
 <div id='duplicates_header'>
-	<h3>
-		Duplicates found - <span ng-bind="duplicates.length"></span>
-	</h3>
+	<h4>
+		Duplicates found - <span ng-bind="duplicates.entries.length"></span>
+	</h4>
+	<h4>
+        Total size: <span>{{duplicates.totalSize / 1024 /1024/1024 | number : 2}} Gb</span>
+    </h4>
+	
 </div>
 
 <div id='duplicates' class="container-fluid panel">
-	<div class="row" ng-repeat="obj in duplicates">
+	<div class="row" ng-repeat="obj in duplicates.entries | limitTo:50">
 		<div class="col-lg-12 col-md-12">
 			<span>{{obj.name}}</span>
 		</div>
 		<div class="col-lg-12 col-md-12">
 			<div id='duplicates_files' class="container-fluid panel">
 				<div class="row" ng-repeat="file in obj.files">
-					<div class="col-lg-8 col-md-8">
+					<div class="col-lg-6 col-md-6">
 						<span>{{file.path}}</span>
 					</div>
-
-					<div class="col-lg-2 col-md-2">
+                    <div class="col-lg-2 col-md-2">
+                        <span>{{file.status}}</span>
+                    </div>
+					<div class="col-lg-1 col-md-1">
 						<span>{{file.size / 1024 /1024 | number : 2}} Mb</span>
 					</div>
 
 					<div class="col-lg-2 col-md-2">
 						<span>{{file.createdDate | date:'yyyy-MM-dd HH:mm'}}</span>
 					</div>
+					
+					<div class="col-lg-1 col-md-1">
+                        <span class="btn glyphicon glyphicon-minus-sign" ng-click="deleteFile(file.id)"></span>
+                    </div>
 				</div>
 			</div>
 		</div>
