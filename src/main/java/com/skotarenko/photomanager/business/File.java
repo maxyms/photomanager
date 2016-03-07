@@ -1,4 +1,4 @@
-package com.skotarenko.photomanager;
+package com.skotarenko.photomanager.business;
 
 import java.util.Arrays;
 import java.util.Date;

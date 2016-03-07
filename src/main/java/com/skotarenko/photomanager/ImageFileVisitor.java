@@ -21,6 +21,8 @@ import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.skotarenko.photomanager.business.File;
+
 public class ImageFileVisitor extends SimpleFileVisitor<Path> {
     private static final Logger logger = LoggerFactory.getLogger(ImageFileVisitor.class);
     private Collection<File> collection;

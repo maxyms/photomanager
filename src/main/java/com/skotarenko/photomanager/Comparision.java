@@ -3,6 +3,8 @@ package com.skotarenko.photomanager;
 import java.util.List;
 import java.util.Map.Entry;
 
+import com.skotarenko.photomanager.business.File;
+
 public class Comparision {
 	private String name;
 	private List<File> files;

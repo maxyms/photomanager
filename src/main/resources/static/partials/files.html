@@ -3,9 +3,9 @@
 		<td><h3>
 				All Files - <span ng-bind="files.length"></span>
 			</h3></td>
-		<td></td>
+		<td> Filter: <input ng-model="filterParam"/></td>
 	</tr>
-	<tr ng-repeat="file in files">
+	<tr ng-repeat="file in files | filter:filterParam">
 		<td>{{file.name}}</td>
 		<td>{{file.size / 1024 /1024 | number : 2}} Mb</td>
 		<td>{{file.path}}</td>

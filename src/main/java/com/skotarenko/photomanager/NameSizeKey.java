@@ -1,5 +1,7 @@
 package com.skotarenko.photomanager;
 
+import com.skotarenko.photomanager.business.File;
+
 public class NameSizeKey implements IKey {
     private String name;
     private Long size;

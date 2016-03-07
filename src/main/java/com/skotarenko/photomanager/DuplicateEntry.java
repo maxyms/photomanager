@@ -2,6 +2,8 @@ package com.skotarenko.photomanager;
 
 import java.util.Collection;
 
+import com.skotarenko.photomanager.business.File;
+
 public class DuplicateEntry {
     private String name;
     private Collection<File> files;

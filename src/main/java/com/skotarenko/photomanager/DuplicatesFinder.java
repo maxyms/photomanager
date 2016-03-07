@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.skotarenko.photomanager.business.File;
+
 public class DuplicatesFinder {
     private static final Logger logger = LoggerFactory.getLogger(DuplicatesFinder.class);
 

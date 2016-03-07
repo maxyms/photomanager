@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.GsonBuilder;
+import com.skotarenko.photomanager.business.File;
 
 public class PhotoFileManager {
     private static final Logger logger = LoggerFactory.getLogger(PhotoFileManager.class);

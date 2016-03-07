@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skotarenko.photomanager.DuplicateEntry;
 import com.skotarenko.photomanager.DuplicatesFinder;
-import com.skotarenko.photomanager.File;
+import com.skotarenko.photomanager.business.File;
 import com.skotarenko.photomanager.web.data.FileRepository;
 
 @RestController
