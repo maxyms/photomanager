@@ -1,16 +1,24 @@
 angular.module('photomanager.controllers', []).controller('FilesListController',
 		function($scope, $state, /*popupService,*/ $window, Files) {
-			$scope.files = Files.query();
+			
+			Files.get(function(data){
+				$scope.files = data;
+			});
 
-			$scope.deleteItem = function(item) {
+			$scope.deleteFile = function(file) {
 				/*if (popupService.showPopup('Really delete this?')) {
 					item.$delete(function() {
 						$window.location.href = '';
 					});
 				}*/
 			};
+			
+			$scope.addFiles = function() {
+				Files.add();
+			};
+			
 		}).controller('DuplicatesController',
-		function($scope, $stateParams, Duplicates) {
+		function($scope, $stateParams, Duplicates, Files) {
 			Duplicates.get.then(function(result) {
 				console.log(result.data);
 //				console.log(result.data.data);
@@ -22,6 +30,13 @@ angular.module('photomanager.controllers', []).controller('FilesListController',
 			}, function(result) {
 				console.error("Error: No data returned. " + result);
 			});
+			
+			$scope.deleteFile = function(_id) {
+				console.log('deleting file ' + _id);
+				Files.delete(_id);
+			};
+			
+			
 			
 		}).controller('ItemCreateController',
 		function($scope, $state, $stateParams, Item) {
