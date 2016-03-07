@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.skotarenko.photomanager.File;
 import com.skotarenko.photomanager.PhotoFileManager;
+import com.skotarenko.photomanager.business.File;
 
 @Service
 public class DumpFileRepository {

@@ -9,13 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skotarenko.photomanager.Duplicates;
 import com.skotarenko.photomanager.DuplicatesFinder;
-<<<<<<< HEAD
 import com.skotarenko.photomanager.business.File;
-import com.skotarenko.photomanager.web.data.FileRepository;
-=======
-import com.skotarenko.photomanager.File;
 import com.skotarenko.photomanager.web.data.FilesDataService;
->>>>>>> 9af75599fa4fcd71f7ccda9eac422fa766402a80
 
 @RestController
 @RequestMapping("/api/duplicate")

@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skotarenko.photomanager.File;
+import com.skotarenko.photomanager.business.File;
 import com.skotarenko.photomanager.data.DumpFileRepository;
 import com.skotarenko.photomanager.data.FilesRepository;
 
